@@ -9,9 +9,9 @@ import SwiftUI
 
 @main
 struct WardrobeAppApp: App {
+    private let delegatedApp = WardrobeInMyPhoneApp()
+
     var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
+        delegatedApp.body
     }
 }
