@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct WardrobeAppApp: App {
-    private let delegatedApp = WardrobeInMyPhoneApp()
+    @StateObject private var router = AppRouter()
 
     var body: some Scene {
-        delegatedApp.body
+        WindowGroup {
+            AppRootView()
+                .environmentObject(router)
+        }
     }
 }

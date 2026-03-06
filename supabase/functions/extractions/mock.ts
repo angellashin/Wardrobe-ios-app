@@ -11,19 +11,24 @@ const MODEL_TAGGING = "tag-v0-mock";
 export function buildMockExtractionResponse(
   input: ExtractionCreateRequest,
   extractionId: string,
+  itemId: string,
   variant: "initial" | "retry",
 ): ExtractionResponse {
-  const basePath = `mock/${input.target_kind}/${extractionId}`;
+  const basePath = `mock/${input.target_kind}/${itemId}`;
   const suffix = variant === "retry" ? "retry" : "initial";
 
   return {
     extraction_id: extractionId,
+    item_id: itemId,
     status: "succeeded",
     target_kind: input.target_kind,
     assets: {
       original_path: `${basePath}/v1/original.jpg`,
       cutout_path: `${basePath}/v1/cutout-${suffix}.png`,
       preview_path: `${basePath}/v1/preview-${suffix}.png`,
+      original_signed_url: undefined,
+      cutout_signed_url: undefined,
+      preview_signed_url: undefined,
     },
     suggestions: {
       category: "top",

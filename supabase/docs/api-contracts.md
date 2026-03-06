@@ -9,16 +9,23 @@ Request body:
 - `target_kind`: `"closet"` or `"candidate"` (required)
 - `tap_x`: number in range `[0, 1]` (required)
 - `tap_y`: number in range `[0, 1]` (required)
+- `image_base64`: base64 image payload (optional, fallback mock image when omitted)
+- `image_mime_type`: e.g. `image/jpeg`, `image/png` (optional)
+- `image_file_name`: original file name hint (optional)
 - `image_path_hint`: string path/name from client picker (optional metadata only)
 - `client_request_id`: idempotency key string (optional, recommended)
 
 Response body:
 - `extraction_id`: uuid-like string
+- `item_id`: persisted DB item id
 - `status`: `"succeeded"` for stub
 - `assets`:
 - `original_path`
 - `cutout_path`
 - `preview_path`
+- `original_signed_url`
+- `cutout_signed_url`
+- `preview_signed_url`
 - `suggestions`:
 - `category`, `item_type`, `season_tags`, `warmth_level`, `primary_color`
 - `confidence`:

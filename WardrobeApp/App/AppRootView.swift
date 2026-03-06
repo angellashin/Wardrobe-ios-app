@@ -17,11 +17,19 @@ struct AppRootView: View {
 }
 
 private struct AuthGatePlaceholderView: View {
+    @EnvironmentObject private var router: AppRouter
+
     var body: some View {
-        PlaceholderCard(
-            title: "AuthGate",
-            message: "Authentication flow placeholder. Phase 2 wires Supabase Auth."
-        )
+        VStack(spacing: 16) {
+            PlaceholderCard(
+                title: "AuthGate",
+                message: "Authentication flow placeholder. Phase 2 wires Supabase Auth."
+            )
+            Button("Continue (Placeholder Login)") {
+                router.isAuthenticated = true
+            }
+            .buttonStyle(.borderedProminent)
+        }
         .padding()
     }
 }

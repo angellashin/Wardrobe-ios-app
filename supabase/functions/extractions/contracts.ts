@@ -6,6 +6,9 @@ export type ExtractionCreateRequest = {
   target_kind: TargetKind;
   tap_x: number;
   tap_y: number;
+  image_base64?: string;
+  image_mime_type?: string;
+  image_file_name?: string;
   image_path_hint?: string;
   client_request_id?: string;
 };
@@ -25,12 +28,16 @@ export type ConfirmTagsRequest = {
 
 export type ExtractionResponse = {
   extraction_id: string;
+  item_id: string;
   status: "succeeded";
   target_kind: TargetKind;
   assets: {
     original_path: string;
     cutout_path: string;
     preview_path: string;
+    original_signed_url?: string;
+    cutout_signed_url?: string;
+    preview_signed_url?: string;
   };
   suggestions: {
     category: Category;
